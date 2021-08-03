@@ -1,0 +1,112 @@
+<section style="margin-left: 15%;">
+    <form [formGroup]="searchForm" class="container mt-5" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <div class="col-3">
+                <mat-form-field classappearance="standard">
+                    <mat-label>Select Specialization</mat-label>
+                    <mat-select formControlName="doctorSpecialization">
+                        <mat-option *ngFor="let specialization of specializations" [value]=specialization>
+                            {{specialization}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-3">
+                <mat-form-field classappearance="standard">
+                    <mat-label>Choose Date</mat-label>
+                    <input matInput formControlName="appointmentDate" [min]="currentDate" [matDatepicker]="picker"
+                        placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="searchForm.get('appointmentDate').hasError('required')">Please choose date for
+                        Appointment</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-3">
+                <mat-form-field classappearance="standard">
+                    <mat-label>Enter Doctor Name</mat-label>
+                    <input matInput formControlName="doctorName" placeholder="Placeholder">
+                    <mat-error *ngIf="searchForm.get('doctorName').hasError('stringPattern')">Please enter letters only
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-3">
+                <button mat-flat-button class="my-2" color="primary">Search Doctor</button>
+            </div>
+
+        </div>
+    </form>
+
+
+</section>
+<div class="mainsection">
+
+    <ng-template [ngIf]="!searchFlag" [ngIfElse]="searchedDocotor">
+        <div>
+            <h4 class="text-muted text-center">Search doctor for book the appointment.</h4>
+        </div>
+    </ng-template>
+
+    <ng-template #searchedDocotor>
+        <ng-container *ngIf="listOfDoctors.length else notFound">
+            <ng-container *ngTemplateOutlet="searchResult"> </ng-container>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #notFound>
+        <div id="empty-list" class="row justify-content-center w-100">
+            <h4 class="text-muted">No Search Found.</h4>
+        </div>
+    </ng-template>
+    <!-- Search result  -->
+    <ng-template #searchResult>
+        <div *ngFor="let doctor of listOfDoctors">
+            <div class="container my-4">
+                <div class="row w-100">
+                    <div class="col-12">
+                        <mat-card class="profile-card mx-auto" fxLayout="row">
+                            <mat-card-header>
+
+                                <img mat-card-avatar class="profile-header-image" [src]=doctor.image
+                                    alt="doctor profile pic">
+                            </mat-card-header>
+                            <mat-card-content>
+                                <mat-card-title>{{doctor.name}}</mat-card-title>
+                                <mat-card-subtitle>Specialization &nbsp;{{doctor.specialization}}</mat-card-subtitle>
+
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard
+                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                    scrambled it to make a type specimen
+                                    book.
+                                </p>
+                                <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+                                    fxLayoutAlign="space-between center">
+                                    <div class="doctor-rating">
+                                        <mat-card-subtitle class="m-0">Consultation Fee :- {{doctor.consultationFee}}
+                                        </mat-card-subtitle>
+                                        <ngb-rating [(rate)]="doctor.rating" [max]="5" [readonly]=true>
+                                            <ng-template let-fill="fill">
+                                                <span class="star" [class.filled]="fill ===  100"
+                                                    [class.notfilled]='fill === 0'>&#9733;</span>
+                                            </ng-template>
+                                        </ngb-rating>
+                                    </div>
+
+                                    <mat-card-actions class="mx-2 my-auto">
+                                        <button mat-flat-button class="w-100" color="primary"
+                                            (click)="showProfile(doctor)">View Profile</button>
+                                    </mat-card-actions>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

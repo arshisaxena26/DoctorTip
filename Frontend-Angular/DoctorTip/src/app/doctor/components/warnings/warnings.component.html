@@ -1,0 +1,28 @@
+<main class="container  w-50">
+	<div class="container ml-2 mt-5  text-white" style="background-color: rgb(76, 122, 207);"
+		*ngIf="concerns.length else empty">
+		<div class="mt-3" *ngFor="let concern of concerns">
+			<div class="row py-3">
+				<h6 class="col-5">Raised By:</h6>
+				<p>{{concern.name}}</p>
+			</div>
+
+			<div class="row">
+				<h6 class="col-5">Appointment Date:</h6>
+				<p>{{concern.date}}</p>
+			</div>
+
+			<div class="row py-2">
+				<h6 class="col-5">Issue:</h6>
+				<p>{{concern.comment}}</p>
+			</div>
+			<hr style="background-color: azure;">
+		</div>
+	</div>
+
+	<ng-template #empty>
+		<div class="container mt-5 text-muted">
+			<h2 class="text-center py-5">No Warnings Raised.</h2>
+		</div>
+	</ng-template>
+</main>

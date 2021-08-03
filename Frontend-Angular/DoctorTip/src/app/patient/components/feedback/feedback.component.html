@@ -1,0 +1,57 @@
+<div class="container">
+  <section id="contact">
+    <div class="sectionheader">
+      <h1>FEEDBACK FORM</h1>
+    </div>
+    <article>
+      <p>
+        Hi! We the team of Doctor-Tip we would love to hear from you about our
+        services
+      </p>
+
+      <label for="checkcontact" class="contactbutton">
+        <div class="mail"></div> </label
+      ><input id="checkcontact" type="checkbox" />
+
+      <form
+        #feedbackForm="ngForm"
+        (ngSubmit)="onSubmit(feedbackForm)"
+        class="contactform"
+      >
+        <div class="music-rating text-center pt-3">
+          <ngb-rating
+            [(rate)]="rating"
+            [max]="5"
+            name="rating"
+            id="rating"
+            ngModel
+          >
+            <ng-template let-fill="fill">
+              <span
+                class="star p-2"
+                [class.filled]="fill === 100"
+                [class.notfilled]="fill === 0"
+                >&#9733;</span
+              >
+            </ng-template>
+          </ngb-rating>
+        </div>
+        <p class="input_wrapper">
+          <input
+            type="text"
+            name="contact_email"
+            value=""
+            id="contact_email"
+          /><label for="contact_email">EMAIL</label>
+        </p>
+
+        <p class="textarea_wrapper">
+          <textarea name="content" id="content" ngModel required></textarea>
+        </p>
+        <p class="submit_wrapper">
+          <input type="submit" value="SUBMIT FEEDBACK" />
+        </p>
+      </form>
+    </article>
+  </section>
+</div>

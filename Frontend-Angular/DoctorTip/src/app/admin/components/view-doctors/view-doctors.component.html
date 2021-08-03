@@ -1,0 +1,36 @@
+<section class="container my-4" *ngIf="doctors && doctors.length else empty">
+    <h2 class="text-center text-muted">Doctors</h2>
+    <div *ngFor='let item of doctors'>
+        <div class="container mt-4  d-flex justify-content-center">
+            <div class="row w-75">
+                <div class="col-12">
+                    <mat-card class="profile-card d-flex">
+                        <mat-card-header>
+                            <img mat-card-avatar class="profile-header-image" [src]="item.image"
+                                alt="doctor profile pic">
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-card-title>{{item.name}}</mat-card-title>
+                            <p>Specialization: {{item.specialization}} </p>
+                            <p>Clinic: {{item.clinicName}} </p>
+                            <p>Location: {{item.location}} </p>
+                            <p>Experience: {{item.experience}} </p>
+                            <p>Consultation Fee: {{item.consulationFees}} </p>
+
+                            <mat-card-actions>
+                                <button mat-flat-button color="primary" (click)="navigate(item.id)" class="px-5">Concerns</button>
+                            </mat-card-actions>
+
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #empty>
+    <div class="container mt-5 text-white" style="background-color: steelblue;">
+        <h2 class="text-center sizing">No Doctors Registered in the System.</h2>
+    </div>
+</ng-template>

@@ -1,0 +1,38 @@
+<div class="container my-5" *ngIf="appointments.length else empty">
+    <table class="table" style="background-color: rgb(161, 194, 255);">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">TimeSlot</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let appointment of appointments">
+                <td>{{appointment.appointmentDate}}</td>
+                <td>{{appointment.appointmentStatus}}</td>
+                <td>{{appointment.patientName}}</td>
+                <td>{{appointment.timeslottime}}</td>
+
+
+                <td><button class="btn btn-primary" [disabled]="appointment.appointmentStatus=='Booked'"
+                        (click)="navigateTo(appointment.appointmentId)"
+                        *ngIf="!appointment.prescription">Fill-Prescription</button>
+                </td>
+                <td><button class="btn btn-primary" [disabled]="appointment.appointmentStatus=='Attended'"
+                        (click)="StatusUpdate(appointment.appointmentId)">Attended</button></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<ng-template #empty>
+    <div class="container mt-5 text-muted">
+        <h2 class="text-center py-5">No Appointments.</h2>
+    </div>
+</ng-template>

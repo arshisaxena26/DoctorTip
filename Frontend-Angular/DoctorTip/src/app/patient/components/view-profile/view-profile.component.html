@@ -1,0 +1,89 @@
+<div class="container mt-3">
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column p-2 align-items-center text-center">
+              <div class="image"><img [src]="patient.patientImage" alt="Admin" />
+              </div>
+              <div class="mt-2 mb-4">
+                <h4 class="p-2">{{ patient.name }}</h4>
+                <h5 class="p-2">{{ patient.userEmail }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Full Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.name }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.userEmail }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Phone</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.patientPhone }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Age</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.patientAge }}
+              </div>
+            </div>
+
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Location</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.patientLocation }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Gender</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.patientGender }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Blood Group</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ patient.patientBloodGroup }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

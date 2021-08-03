@@ -1,0 +1,29 @@
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.value-text {
+  margin: 0;
+}
+
+.title-text {
+  margin: 0;
+  text-align: center;
+  color: grey;
+}
+
+.card-header {
+  background-color: steelblue;
+  color: white;
+  justify-content: center;
+}
+
+.mat-card {
+  border-radius: 10px;
+}

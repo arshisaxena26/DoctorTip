@@ -1,0 +1,60 @@
+    
+ <mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2 class="card-title">Your Prescription</h2>
+        </mat-card-title>
+    </mat-card-header>
+    
+    <div class="container">
+        <div class="row py-2">
+            <div class="col col-sm-6 col-md-6 my-2">
+                <h6>Dos</h6>
+            </div>
+            <div class="col col-sm-6 col-md-6 my-2">
+                <h6>{{prescriptionData.dos}}</h6>
+            </div>
+            <hr />
+        </div>
+        <div class="row py-2">
+            <div class="col col-sm-6 col-md-6 my-2">
+                <label>
+                    <h6>Dont's</h6>
+                </label>
+            </div>
+            <div class="col col-sm-6 col-md-6 my-2">
+                <label>
+                    <h6>{{prescriptionData.donts}}</h6>
+                </label>
+            </div>
+            <hr />
+        </div>
+        <div class="row py-2">
+            <div class="col col-sm-6 col-md-6 my-2">
+                <label>
+                    <h6>Follow up Date</h6>
+                </label>
+            </div>
+            <div class="col col-sm-6 col-md-6 my-2">
+                <label>
+                    <h6>{{prescriptionData.followUp}}</h6>
+                </label>
+            </div>
+        </div>
+        <div class="row py-2">
+            <div class="col col-sm-6 col-md-6 my-2">
+                <label>
+                    <h6>Message</h6>
+                </label>
+            </div>
+            <div class="col col-sm-6 col-md-6 my-2">
+                <label>
+                    <h6>{{prescriptionData.message}}</h6>
+                </label>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+</mat-card>

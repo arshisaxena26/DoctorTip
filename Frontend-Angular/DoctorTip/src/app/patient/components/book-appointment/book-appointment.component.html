@@ -1,0 +1,97 @@
+<form action="submitappointment" method="post">
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+        <div class="card px-1 py-4">
+            <div class="card-body">
+                <h1 class="card-title mx-auto">Book Appointment</h1>
+                <h6 class="my-4 text-center">Please provide following
+                    information</h6>
+                <div class="row py-2">
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <h6>Doctor Name</h6>
+                    </div>
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <h6>
+                            {{doctor.name}}
+                        </h6>
+                    </div>
+                    <hr />
+                </div>
+                <div class="row py-2">
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <label>
+                            <h6>Clinic Name</h6>
+                        </label>
+                    </div>
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <label>
+                            <h6>
+                                {{doctor.clinicName}}
+                            </h6>
+                        </label>
+                    </div>
+                    <hr />
+                </div>
+                <div class="row py-2">
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <label>
+                            <h6>Consultation Fee</h6>
+                        </label>
+                    </div>
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <label>
+                            <h6>
+                                {{doctor.consultationFee}}
+                            </h6>
+                        </label>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <label>
+                            <h6>Appointment Date</h6>
+                        </label>
+                    </div>
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <label>
+                            <h6>
+                                {{date}}
+                            </h6>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-sm-6 col-md-6 d-flex align-items-center">
+                        <label>
+                            <h6>Appointment Slots</h6>
+                        </label>
+                    </div>
+                    <div class="col col-sm-6 col-md-6 my-2">
+                        <div class="container">
+                            <div class="row">
+
+                                <div *ngIf="!avaiableSlot else notFound">
+                                    <h4 class="text-muted">No slots are available.</h4>
+                                </div>
+
+                                <ng-template #notFound>
+                                    <div *ngFor="let timeSlot of timeSlotList|keyvalue">
+                                        <div class="col col-sm-6">
+                                            <label class="radio"> <input class="form-check-input" type="radio" name="timeSlot" (change)="radioChange($event)"
+                                                    [value]="timeSlot.key" /> <span>{{timeSlot.value}}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block confirm-button" (click)="submitappointment()">Confirm</button>
+                <div class="d-flex flex-column text-center px-5 mt-3 mb-3">
+                    <small class="agree-text">By Booking this appointment you
+                        agree to the</small> <a href="#" class="terms">Terms & Conditions </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

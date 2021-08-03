@@ -1,0 +1,132 @@
+<div class="container mt-4">
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card ">
+          <div class="card-body ">
+            <div class="d-flex flex-column p-2  align-items-center text-center">
+              <div class="image">
+                <img [src]="docImage" alt="profile image">
+              </div>
+              <div class="mt-2 mb-4">
+                <h4>{{doctors.name}}</h4>
+                <p class="text-secondary mb-4">{{doctors.specialization}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{docEmail}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Clinic Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{doctors.clinicName}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Experience</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{doctors.experience}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Consultation Fees</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{doctors.consulationFees}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Location</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{doctors.location}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12 my-3">
+                <button mat-flat-button color="primary" (click)="setAvailablity(doctors.id)">Set Availability</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-3 mb-5">
+  <form method="post">
+
+  <div class="row">
+
+    <div class="container" *ngIf="doctors.comments.length">
+      <hr>
+      <h2>Comments</h2>
+      <table class="table" *ngFor="let comment of doctors.comments">
+        <thead>
+
+          <tr>
+
+            <th style="color:rgb(12, 0, 175);background-color:rgb(200, 222, 255)">{{comment.commentContent}}
+              <div class="btn1 " style="padding-left: 80%;">
+                <button *ngIf="!comment.liked" (click)="heartClicked(comment.commentId)" mat-flat-button color="primary">Like</button>
+                <button *ngIf="comment.liked" (click)="heartClicked(comment.commentId)" mat-flat-button color="primary">Dislike</button>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+
+            <td>
+
+              <div *ngIf="comment.commentReply">
+                <span style="font-size:medium">{{comment.commentReply}}</span>
+              </div>
+
+
+              <!-- <ng-template> -->
+              <div *ngIf="!comment.commentReply">
+                <form>
+                  <textarea placeholder='Reply Here' [(ngModel)]="textWritten"
+                    [ngModelOptions]="{standalone: true}"></textarea>
+                </form>
+
+                <div class="button1">
+                  <button type="submit" (click)="replied(comment.commentId)" mat-flat-button color="primary">Reply</button>
+                </div>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</form>
+</div>

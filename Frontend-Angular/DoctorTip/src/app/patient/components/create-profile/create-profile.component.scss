@@ -1,0 +1,24 @@
+.profile,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('../../../../assets/patient/edit-patient-profile.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-heading {
+  font-weight: 300;
+}
+
+.profile {
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-radio-button {
+    margin: 0 20px;
+  }
+}

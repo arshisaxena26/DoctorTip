@@ -1,0 +1,74 @@
+<div class="container appointments-section" *ngIf="dataLength else empty">
+    <div class="mat-elevation-z8" style="margin: 5% 0;">
+        <table mat-table class="full-width-table" [dataSource]="dataSource">
+    
+            <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let row">{{row.date}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let row">{{row.status}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="Doctor Name">
+                <th mat-header-cell *matHeaderCellDef>Doctor Name</th>
+                <td mat-cell *matCellDef="let row">{{row.drName}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Clinic Name">
+                <th mat-header-cell *matHeaderCellDef>Clinic Name</th>
+                <td mat-cell *matCellDef="let row">{{row.clinicName}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="Time">
+                <th mat-header-cell *matHeaderCellDef>Time</th>
+                <td mat-cell *matCellDef="let row">{{row.timeSlot}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="Operations">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let row">
+                    <ng-template [ngIf]="row.status != 'Attended'" [ngIfElse]="attended">
+                        <div>
+                            <button mat-flat-button class="mx-2" color="primary" disabled>Prescription</button>
+                        </div>
+                    </ng-template>
+    
+                    <ng-template #attended>
+                        <div>
+                            <button mat-flat-button class="mx-2" color="primary"
+                                (click)="showPrescription(row.id)">Prescription</button>
+                            <button mat-flat-button class="mx-2" color="primary" (click)="fillConcern(row.id)"
+                                *ngIf="row.concernId==0">Concern</button>
+                            <button mat-flat-button class="mx-2" color="primary" (click)="fillfeedback(row.id)"
+                                *ngIf="row.feedbackId==0">Give Feedback</button>
+                        </div>
+                    </ng-template>
+    
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    
+        <mat-paginator #paginator [length]="dataLength" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+            aria-label="Select page">
+        </mat-paginator>
+    </div>
+    
+</div>
+<ng-template #concern>
+    <app-fill-concerns [appointmentId]="appId"></app-fill-concerns>
+</ng-template>
+
+<ng-template #prescription>
+    <app-view-prescription [appointmentId]="appId"></app-view-prescription>
+</ng-template>
+
+<ng-template #empty>
+    <div class="container appointments-section text-muted">
+        <h2 class="text-center py-5">No Appointments.</h2>
+    </div>
+</ng-template>

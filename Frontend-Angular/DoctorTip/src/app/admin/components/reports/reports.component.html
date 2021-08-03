@@ -1,0 +1,41 @@
+<div class="grid-container mt-4">
+  <h2 class="text-center text-muted">Reports Dashboard</h2>
+
+  <!-- Cards -->
+
+  <mat-grid-list class="mt-4" cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+    <mat-grid-tile *ngFor="let mc of miniCardData | keyvalue" [colspan]="( cardLayout | async )?.miniCard.cols"
+      [rowspan]="( cardLayout | async )?.miniCard.rows">
+      <app-mini-card [title]="mc.key" [value]="mc.value"></app-mini-card>
+    </mat-grid-tile>
+
+    <!-- Charts -->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Appointments by Doctor Specialization">
+        <app-appointment-stats-chart></app-appointment-stats-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="User Activity">
+        <app-activity-stats-chart></app-activity-stats-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Users Status Statistics">
+        <app-usage-stats-chart></app-usage-stats-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Appointment Ratings">
+        <app-rating-stats-chart></app-rating-stats-chart>
+      </app-card>
+    </mat-grid-tile>
+
+    <!-- Table -->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="Doctor Popularity Statistics">
+        <app-popularity-table></app-popularity-table>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

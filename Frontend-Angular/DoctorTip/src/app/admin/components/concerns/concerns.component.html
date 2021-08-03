@@ -1,0 +1,42 @@
+<main class="container mt-4">
+    <h2 class="text-center text-muted">Doctor Concerns</h2>
+    <section *ngIf="concerns && concerns.length else empty">
+        <div class="row concern">
+            <div class="container ml-2 my-5 col-4" *ngFor='let item of concerns'>
+                <mat-card>
+                    <mat-card-content class="p-2">
+                        <h5 class="text-danger">{{item.comment}}</h5><br>
+                        <h6 class="text-muted">Raised By: &nbsp; {{item.name}}</h6>
+                        <h6 class="text-muted">Appointment Date:&nbsp; {{item.date}}</h6>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="mt-5" *ngIf='!item.warned'>
+                            <button class="w-100 btn btn-danger" (click)="sendWarning(item.id)">Send
+                                Warning</button>
+                        </div>
+
+                        <div class="mt-5" *ngIf='item.warned'>
+                            <h5 class="col text-success mb-2 text-center">Warning Sent!</h5>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+
+            </div>
+        </div>
+
+        <div class="my-5 row justify-content-center" *ngIf='blocked'>
+            <button mat-flat-button class="w-25 btn-success"  (click)="unblock()">Unblock</button>
+        </div>
+
+        <div class="my-5 row justify-content-center" *ngIf='warningCount >= 3 && !blocked'>
+            <button mat-flat-button class="w-25 btn-danger"  (click)="block()">Block</button>
+        </div>
+    </section>
+
+    <ng-template #empty>
+        <div class="container mt-5 text-white" style="background-color: steelblue;">
+            <h2 class="text-center sizing">No Concerns Raised.</h2>
+        </div>
+    </ng-template>
+
+</main>

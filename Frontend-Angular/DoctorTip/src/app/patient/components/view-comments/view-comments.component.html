@@ -1,0 +1,41 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+  <div class="be-comment-block">
+    <h1 class="comments-title">Comments</h1>
+    <div *ngFor="let comment of comments">
+      <div class="be-comment">
+        <div class="be-img-comment">
+          <img [src]="comment.image" class="img-radius" alt="User-Profile-Image" />
+        </div>
+        <div class="be-comment-content">
+          <span class="be-comment-name">
+            <h5>{{ comment.patientName }}</h5>
+          </span>
+          <span class="be-comment-time">
+            <div *ngIf="comment.liked">
+              <em class="fa fa-heart red-color"></em>
+            </div>
+            <div *ngIf="!comment.liked"><em class="fa fa-heart"></em></div>
+          </span>
+
+          <p class="be-comment-text">
+            {{ comment.commentContent }}
+          </p>
+          <p class="be-comment-reply" *ngIf="comment.commentReply">{{comment.commentReply}}</p>
+          <hr />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="form-group">
+          <textarea type="text" class="form-control" [(ngModel)]="commentContent" id="commentContent"></textarea>
+        </div>
+      </div>
+      <button mat-flat-button class="w-100 mt-3" type="submit" color="primary" (click)="onSubmit(commentContent)">
+        Comment
+      </button>
+    </div>
+  </div>
+</div>

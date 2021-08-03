@@ -1,0 +1,31 @@
+.full-width-table {
+  width: 100%;
+}
+
+.small-table {
+  width: 70%;
+  margin-left: 15%;
+}
+
+.mat-form-field {
+  font-size: 15px;
+  width: 100%;
+}
+main {
+  min-height: 60%;
+
+  .filter {
+    width: 70%;
+    margin-left: 15%;
+  }
+
+  .mat-header-cell {
+    font-size: large;
+    color: white;
+    background-color: steelblue;
+  }
+
+  .mat-paginator {
+    font-size: medium;
+  }
+}

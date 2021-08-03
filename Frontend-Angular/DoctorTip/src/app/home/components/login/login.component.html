@@ -1,0 +1,132 @@
+<div class="login-reg-panel">
+  <div class="login-info-box">
+    <h2>Have an account?</h2>
+    <label id="label-register" for="log-reg-show">Login</label>
+    <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+  </div>
+
+  <div class="register-info-box">
+    <h2>Don't have an account?</h2>
+    <label id="label-login" for="log-login-show">Register</label>
+    <input type="radio" name="active-log-panel" id="log-login-show">
+  </div>
+
+  <div class="white-panel">
+
+    <div class="login-show">
+      <form class="form" [formGroup]="loginform" (ngSubmit)="login()">
+        <h2>LOGIN</h2><br>
+        <mat-error>
+          {{msg}}
+        </mat-error>
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="emailld">
+          <mat-error *ngIf="loginform.get('emailld').touched && loginform.get('emailld').hasError('required')">
+            Enter email Address
+          </mat-error>
+          <mat-error *ngIf="loginform.get('emailld').touched && loginform.get('emailld').hasError('email')">
+            Enter Valid email Address
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error
+            *ngIf="(loginform.get('password').touched || submitted) && loginform.get('password').errors?.required">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="loginform.get('password').touched && loginform.get('password').errors?.invalidPassword">
+            Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+            letter and 1 number
+          </mat-error>
+          <mat-hint>All Fields Mandatory</mat-hint>
+        </mat-form-field>
+        <button mat-flat-button class="w-50 mt-4" type="submit" [disabled]="!loginform.valid"
+          color="primary">Login</button>
+      </form>
+    </div>
+
+
+
+
+
+    <div class="register-show">
+      <h2>REGISTER</h2><br>
+      <form class="form" [formGroup]="registerform" (ngSubmit)="register()">
+        <mat-form-field class="login-input" appearance="outline">
+
+          <mat-label>User Name</mat-label>
+          <input type="text" matInput formControlName="username">
+          <mat-error
+            *ngIf="(registerform.get('username').touched || submitted) && registerform.get('username').errors?.required">
+            User Name is required
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email">
+          <mat-error *ngIf="registerform.get('email').touched && registerform.get('email').hasError('required')">
+            Enter email address
+          </mat-error>
+          <mat-error *ngIf="registerform.get('email').touched && registerform.get('email').hasError('email')">
+            Enter valid email address
+          </mat-error>
+          <mat-error
+            *ngIf="(registerform.get('email').touched || submitted)  && registerform.get('email').errors?.userEmailNotAvailable">
+            User email is already exist
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error
+            *ngIf="(registerform.get('password').touched || submitted) && registerform.get('password').errors?.required">
+            Password is required
+          </mat-error>
+          <mat-error
+            *ngIf="registerform.get('password').touched && registerform.get('password').errors?.invalidPassword">
+            Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+            letter and 1 number
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword">
+          <mat-error
+            *ngIf="(registerform.get('confirmPassword').touched || submitted)&& registerform.get('confirmPassword').errors?.required">
+            Confirm Password is required
+          </mat-error>
+          <mat-error
+            *ngIf="registerform.get('confirmPassword').touched && registerform.get('confirmPassword').errors?.passwordMismatch">
+            Passwords doesnot match
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Select Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="ROLE_PATIENT">Patient</mat-option>
+            <mat-option value="ROLE_DOCTOR">Doctor</mat-option>
+          </mat-select>
+
+          <mat-error
+            *ngIf="(registerform.get('role').touched || submitted)&& registerform.get('role').errors?.required">
+            Please select your Role
+          </mat-error>
+          <mat-hint>All Fields Mandatory</mat-hint>
+        </mat-form-field>
+
+        <button mat-flat-button class="w-50" type="submit" [disabled]="!registerform.valid"
+          color="primary">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

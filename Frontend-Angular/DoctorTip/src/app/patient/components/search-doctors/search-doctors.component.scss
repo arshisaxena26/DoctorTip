@@ -1,0 +1,49 @@
+.card {
+  width: 80%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.stats {
+  background: #f2f5f8;
+  color: #000;
+}
+
+.articles {
+  font-size: 15px;
+  color: #a1aab9;
+}
+
+.number1 {
+  margin: 0 2.25rem;
+  font-weight: 500;
+}
+
+.mainsection {
+  min-height: 80vh;
+}
+
+.profile-card {
+  width: 80%;
+  height: 250px;
+}
+
+.profile-header-image {
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  border-radius: initial;
+}
+
+.doctor-rating {
+  .star {
+    font-size: 30px;
+  }
+  .filled {
+    color: yellow;
+  }
+
+  .notfilled {
+    color: #6e6a6a;
+  }
+}

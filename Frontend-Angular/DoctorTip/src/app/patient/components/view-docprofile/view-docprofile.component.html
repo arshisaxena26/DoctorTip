@@ -1,0 +1,80 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+  <div class="row justify-content-center pt-5">
+    <div class="col-md-10">
+      <div class="card doctor-card">
+        <div class="card-header text-center">
+          <h4>Profile</h4>
+        </div>
+        <div class="card-block">
+          <div class="doctor-image mt-2">
+            <img [src]="doctor.doctorImage" class="img-radius" alt="Doctor-Profile-Image" />
+          </div>
+          <h6 class="f-w-600 m-t-25 m-b-10">{{ doctor.name }}</h6>
+          <p class="text-muted">
+            {{ doctor.doctorExperience }} Years |
+            {{ doctor.doctorSpecialization }} | {{ doctor.doctorGender }}
+          </p>
+          <hr />
+          <p class="text-muted m-t-15">{{ doctor.doctorClinicName }}, {{ doctor.doctorLocation }}</p>
+
+          <hr />
+          <p class="m-t-15 text-muted">
+            {{ doctor.name }}, a {{ doctor.doctorLocation }} based
+            {{ doctor.doctorSpecialization }} with a vast experience of
+            {{ doctor.doctorExperience }}+ years.
+          </p>
+          <hr />
+
+          <div class="bg-c-blue counter-block m-t-10 p-20">
+            <div class="row">
+              <div class="col-6">
+                <div *ngIf="likeDislike.like">
+                  <em (click)="likefunction(true, false)" class="fa fa-thumbs-up green-color">
+                  </em>
+                </div>
+
+                <div *ngIf="!likeDislike.like">
+                  <em (click)="likefunction(true, false)" class="fa fa-thumbs-up white-color">
+                  </em>
+                </div>
+                <h4>{{ likeCount }}</h4>
+                <p>Like</p>
+              </div>
+              <div class="col-6">
+                <div *ngIf="likeDislike.dislike">
+                  <em (click)="likefunction(false, true)" class="fa fa-thumbs-down red-color"></em>
+                </div>
+
+                <div *ngIf="!likeDislike.dislike">
+                  <em (click)="likefunction(false, true)" class="fa fa-thumbs-down white-color"></em>
+                </div>
+                <h4>{{ dislikeCount }}</h4>
+                <p>Dislike</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button mat-flat-button class="w-100 mt-5 mb-4" color="primary" (click)="bookAppointment()">
+              Book Appointment
+            </button>
+          </div>
+
+          <div class="row justify-content-center doctor-social-link">
+            <div class="col-auto">
+              <a href="#!"><em class="fa fa-facebook text-facebook"></em></a>
+            </div>
+            <div class="col-auto">
+              <a href="#!"><em class="fa fa-twitter text-twitter"></em></a>
+            </div>
+            <div class="col-auto">
+              <a href="#!"><em class="fa fa-dribbble text-dribbble"></em></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-view-comments [docid]="doctor.doctorId"></app-view-comments>
+</div>

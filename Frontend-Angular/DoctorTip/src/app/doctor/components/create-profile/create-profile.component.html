@@ -1,0 +1,121 @@
+<div class="container-fluid bg-light">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <div class="profile d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="profile-heading mb-4 text-center">Fill Profile</h3>
+                            <form [formGroup]="doctorProfile" (ngSubmit)="onSubmit()">
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Clinic Name</mat-label>
+                                    <input type="text" matInput formControlName="doctorClinicName">
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorClinicName').touched && doctorProfile.get('doctorClinicName').hasError('required')">
+                                        Please enter clinic name
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorClinicName').touched && doctorProfile.get('doctorClinicName').errors?.stringPattern">
+                                        Please enter valid clinic name
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Location</mat-label>
+                                    <input type="text" matInput formControlName="doctorLocation">
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorLocation').touched && doctorProfile.get('doctorLocation').hasError('required')">
+                                        Please enter clinic location
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorLocation').touched && doctorProfile.get('doctorLocation').errors?.stringPattern">
+                                        Please entervalid location
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Specialization</mat-label>
+                                    <input type="text" matInput formControlName="doctorSpecialization">
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorSpecialization').touched && doctorProfile.get('doctorSpecialization').hasError('required')">
+                                        Please enter specialization
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorSpecialization').touched && doctorProfile.get('doctorSpecialization').errors?.stringPattern">
+                                        Please enter valid specialization
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Experience</mat-label>
+                                    <input type="text" matInput formControlName="doctorExperience">
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorExperience').touched && doctorProfile.get('doctorExperience').hasError('required')">
+                                        Please enter experience
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="(doctorProfile.get('doctorExperience').touched && !doctorProfile.get('doctorExperience').hasError('required')) && doctorProfile.get('doctorExperience').errors?.experience">
+                                        Please
+                                        Enter valid experience
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Consultation Fee</mat-label>
+                                    <input type="text" matInput formControlName="doctorConsultationFee">
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorConsultationFee').touched && doctorProfile.get('doctorConsultationFee').hasError('required')">
+                                        Please enter consultation fee
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorConsultationFee').touched && doctorProfile.get('doctorConsultationFee').hasError('pattern')">
+                                        Please enter valid number for fee
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Contact No</mat-label>
+                                    <input type="text" matInput formControlName="doctorPhone">
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorPhone').touched && doctorProfile.get('doctorPhone').hasError('required')">
+                                        Please enter your contact number
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorPhone').touched && doctorProfile.get('doctorPhone').hasError('pattern')">
+                                        Please enter valid contact number
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-radio-group aria-label="Select an option" formControlName="doctorGender">
+                                    <mat-radio-button value="male">Male</mat-radio-button>
+                                    <mat-radio-button value="female">Female</mat-radio-button>
+                                    <mat-error
+                                        *ngIf="doctorProfile.get('doctorGender').touched && doctorProfile.get('doctorGender').errors?.required">
+                                        Please select gender
+                                    </mat-error>
+                                </mat-radio-group>
+
+                                <mat-form-field appearance="standard">
+                                    <ngx-mat-file-input formControlName="doctorImage">
+                                        <mat-icon ngxMatFileInputIcon>folder</mat-icon>
+                                    </ngx-mat-file-input>
+                                    <mat-error *ngIf="doctorProfile.get('doctorImage').errors?.required">
+                                        Please select profile image
+                                    </mat-error>
+                                    <mat-hint>* All Fields Mandatory</mat-hint>
+                                </mat-form-field>
+
+                                <button mat-flat-button class="w-100 mt-3" type="submit" color="primary"
+                                    [disabled]="!doctorProfile.valid">Add
+                                    Details</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.full-width-table {
+  width: 100%;
+}
+
+.appointments-section {
+  min-height: 70vh;
+}
+
+.mat-header-cell {
+  font-size: large;
+  text-align: center;
+  color: white;
+}
+
+.mat-header-row {
+  background-color: steelblue;
+}
+
+.mat-cell {
+  font-size: medium;
+  text-align: center;
+  color: gray;
+}
+
+.mat-paginator {
+  font-size: medium;
+}
+
+tr {
+  .mat-row,
+  .mat-footer-row {
+    height: 70px;
+  }
+}
+

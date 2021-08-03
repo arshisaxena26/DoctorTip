@@ -1,0 +1,21 @@
+<div>
+    <h3 class="profile-heading mb-4">Fill Your Concerns</h3>
+
+    <form [formGroup]="concernForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <mat-form-field  appearance="outline">
+                <mat-label>Concern</mat-label>
+                <textarea matInput formControlName="concernComment"></textarea>
+                <mat-error *ngIf="concernForm.controls['concernComment'].touched && concernForm.controls['concernComment'].hasError('required')">
+                    Please fill the comment
+                </mat-error>
+                <mat-error *ngIf="concernForm.controls['concernComment'].touched && concernForm.controls['concernComment'].hasError('wordCount')">
+                    Length Should Not Exceed 50
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <button mat-flat-button class="mx-2" color="primary" type="submit">Submit</button>
+
+    </form>
+</div>

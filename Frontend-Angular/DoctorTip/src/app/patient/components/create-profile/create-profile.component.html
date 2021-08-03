@@ -1,0 +1,96 @@
+<div class="container-fluid bg-light">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <div class="profile d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="profile-heading mb-4 text-center">Fill Profile</h3>
+                            <form [formGroup]="patientProfile" (ngSubmit)="onSubmit()">
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Age</mat-label>
+                                    <input type="text" matInput formControlName="patientAge">
+                                    <mat-error *ngIf="patientProfile.get('patientAge').touched && patientProfile.get('patientAge').hasError('required')">
+                                        Please enter your age
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="patientProfile.get('patientAge').touched && patientProfile.get('patientAge').errors?.age && !patientProfile.get('patientAge').hasError('required')">
+                                        Enter age between 1 to 99
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Contact No</mat-label>
+                                    <input type="text" matInput formControlName="patientPhone">
+                                    <mat-error *ngIf="patientProfile.get('patientPhone').touched && patientProfile.get('patientPhone').hasError('required')">
+                                        Please enter your contact number
+                                    </mat-error>
+                                    <mat-error *ngIf="patientProfile.get('patientPhone').touched && patientProfile.get('patientPhone').hasError('pattern')">
+                                        Please enter valid contact number
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="example" appearance="outline">
+                                    <mat-label>Location</mat-label>
+                                    <input type="text" matInput formControlName="patientLocation">
+                                    <mat-error
+                                        *ngIf="patientProfile.get('patientLocation').touched && patientProfile.get('patientLocation').hasError('required')">
+                                        Please enter your location
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="patientProfile.get('patientLocation').touched && patientProfile.get('patientLocation').errors?.stringPattern">
+                                        Please enter valid location
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Blood group</mat-label>
+                                    <mat-select formControlName="patientBloodGroup">
+                                        <mat-option value="A+">A+</mat-option>
+                                        <mat-option value="A-">A-</mat-option>
+                                        <mat-option value="B+">B+</mat-option>
+                                        <mat-option value="B-">B-</mat-option>
+                                        <mat-option value="AB+">AB+</mat-option>
+                                        <mat-option value="AB-">AB-</mat-option>
+                                        <mat-option value="O+">O+</mat-option>
+                                        <mat-option value="O-">O-</mat-option>
+                                    </mat-select>
+
+                                    <mat-error
+                                        *ngIf="patientProfile.get('patientBloodGroup').touched && patientProfile.get('patientBloodGroup').hasError('required')">
+                                        Please select blood group
+                                    </mat-error>
+
+                                </mat-form-field>
+
+                                <mat-radio-group aria-label="Select an option" formControlName="patientGender">
+                                    <mat-radio-button value="male">Male</mat-radio-button>
+                                    <mat-radio-button value="female">Female</mat-radio-button>
+                                    <mat-error *ngIf="patientProfile.get('patientGender').touched && patientProfile.get('patientGender').errors?.required">
+                                        Please select blood group
+                                    </mat-error>
+                                </mat-radio-group>
+
+
+                                <mat-form-field appearance="standard">
+                                    <ngx-mat-file-input formControlName="patientImage">
+                                        <mat-icon ngxMatFileInputIcon>folder</mat-icon>
+                                    </ngx-mat-file-input>
+                                    <mat-error *ngIf="patientProfile.get('patientImage').errors?.required">
+                                        Please select profile image
+                                    </mat-error>
+                                    <mat-hint>* All Fields Mandatory</mat-hint>
+                                </mat-form-field>
+
+                                <button mat-flat-button class="w-100 mt-3" type="submit" [disabled]="!patientProfile.valid" color="primary">Add Details</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

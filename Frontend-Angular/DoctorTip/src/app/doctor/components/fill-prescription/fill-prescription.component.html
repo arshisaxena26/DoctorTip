@@ -1,0 +1,39 @@
+<div class="container col-md-6 offset-md-3">
+    <div class="card" style="margin-top: 10px;">
+        <div class="card-header">
+            <h4>Precription</h4>
+        </div>
+        <form class="form-horizontal" [formGroup]="PrescriptionForm" (ngSubmit)="onSend()">
+           
+        <div class="card-body">
+           
+                <div class="form-group">
+                    <label for="">Prescription Content</label>
+                    <input type="text" class="form-control" formControlName="prescriptionContent" placeholder="Enter " name="content">
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="">Do's</label>
+                    <input type="text" class="form-control" formControlName="doS" placeholder="Enter " name="Dos">
+                </div>
+    
+                <div class="form-group">
+                    <label for="">Dont's</label>
+                    <input type="text" class="form-control" formControlName="dontS" placeholder="Enter " name="Donts">
+                </div>
+                <div class="form-group">
+                    <label for="">Follow-Up</label>
+                    <input type="date" class="form-control" formControlName="followUp" placeholder="Enter " name="Follow">
+                </div>
+        </div>
+        
+        <div class="card-footer">
+            <button  type="submit" [disabled]="PrescriptionForm.invalid" class="btn btn-success" click="sendPrescription()" style="margin-right: 10px ;">Send</button>
+           
+        </div>
+    
+    </form>
+    </div>
+    </div>
+

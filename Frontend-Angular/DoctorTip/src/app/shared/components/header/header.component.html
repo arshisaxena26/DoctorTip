@@ -1,0 +1,21 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: midnightblue"> <a class="navbar-brand"
+            href="#"> <img src="../../../../assets/stethoscope.png" width="30" height="30" alt="" />
+        </a> <a class="navbar-brand" href="#">DoctorTip</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" *ngFor='let item of navItems'>
+                    <a class="nav-link" (click)="navigateTo(item.route)">{{item.name}} </a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" (click)="loggedOut()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
